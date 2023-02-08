@@ -129,7 +129,7 @@ def main(path_to_secret, output_folder, port=6006, debug=False):
                 done = False
                 with tqdm(total=100) as pbar:
                     while done is False:
-                        status, done = downloader.next_chunk()
+                        status, done = downloader.next_chunk(num_retries=5)
                         pbar.update(int(status.progress() * 100) - pbar.n)
                 # Only if we reach 100% completion we count the file as downloaded
                 downloaded_images_status_file.loc[

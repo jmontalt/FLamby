@@ -1,5 +1,6 @@
 import os
 import pickle
+from pathlib import Path
 
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -47,7 +48,8 @@ def create_service(
 
     cred = None
 
-    pickle_file = f"token_{API_SERVICE_NAME}_{API_VERSION}.pickle"
+    pickle_file = str(Path(__file__).parent /
+                      f"token_{API_SERVICE_NAME}_{API_VERSION}.pickle")
 
     if os.path.exists(pickle_file):
         with open(pickle_file, "rb") as token:
