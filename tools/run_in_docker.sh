@@ -10,6 +10,7 @@ docker run \
     --gpus all \
     --mount type=bind,source=/central_data,target=/central_data \
     --mount type=bind,source=$ROOT_DIR,target=/opt/FLamby \
+    --ipc host \
     --network host \
     $IMAGE \
     "$@"
